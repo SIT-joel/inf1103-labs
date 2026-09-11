@@ -26,5 +26,7 @@ while user_input != "quit":
         print("Overstock — total inventory exceeds 500 units")
         break
 
+# Totals print on both exit paths (quit and overstock), if required just add if statement to only print for quit and not overstock
+# if user_input == "quit": 
 print("Total Units Processed:", inventory)
 print("Number of Failed/Rejected Entries:", error)

@@ -1,4 +1,6 @@
 def load_inventory():
+    with open("inventory.txt","a+") as f:
+        pass
     with open("inventory.txt","r+") as f:
         inventory = f.read()
         if len(inventory) == 0: # Empty file or just created file
@@ -40,8 +42,8 @@ def get_valid_input(transaction_history,total,failed_attempts):
         order_no = 1001 + len(transaction_history)
         transaction = f"{order_no}, {product_name}, {quantity}"
         transaction_history.append(transaction)
-        total = int(total) + 1
-        print(f"New Order Added: \n{transaction} \nTax: $0.10 | Total Inventory: {len(transaction_history)} \n")
+        total = int(total) + quantity
+        print(f"New Order Added: \n{transaction} \nTax: $0.10 | Total Inventory: {total} \n")
 
         return (quantity,failed_attempts,transaction_history,total) 
 

@@ -66,6 +66,11 @@ def search_product(inventory):
     print("Product not found.")
     return None
 
+def save_inventory(inventory):
+    with open("inventory.json","w") as f:
+        json.dump(inventory, f, indent=4)
+    return None
+
 def main():
     print("========================================")
     print("INVENTORY MANAGEMENT SYSTEM")
@@ -78,7 +83,8 @@ def main():
     print("2. Add Product")
     print("3. Update Stock")
     print("4. Search Product")
-    print("5. Exit")
+    print("5. Save Inventory")
+    print("6. Exit")
     print("----------------------------")
     print()
     while True:
@@ -93,6 +99,13 @@ def main():
         elif option == "4":
             search_product(inventory)
         elif option == "5":
+            print("Saving inventory...")
+            save_inventory(inventory)
+            print("Inventory saved successfully to inventory.json.")
+        elif option == "6": # save before exit
+            print("Saving inventory before exit...")
+            save_inventory(inventory)
+            print("Inventory saved successfully.")
             break
         else:
             print("Invalid option!")

@@ -1,3 +1,18 @@
+import json
+import os
+
+def load_inventory():
+    inventory = [] # begin with an empty inventory
+    if os.path.exists("inventory.json"):
+        print("inventory.json found.")
+        with open("inventory.json","r") as f:
+            inventory = json.load(f)
+        print("Inventory loaded successfully.")
+    else:
+        print("inventory.json not found.")
+        print("Starting with an empty inventory.")
+    return inventory
+
 def display_all(inventory):
     print("Current Inventory")
     print("------------------------------------------------")
@@ -56,7 +71,8 @@ def main():
     print("INVENTORY MANAGEMENT SYSTEM")
     print("========================================")
     print()
-    inventory = [] # begin with an empty inventory
+    inventory = load_inventory()
+    print()
     print("----------- MENU -----------")
     print("1. Display All Products")
     print("2. Add Product")

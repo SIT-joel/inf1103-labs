@@ -1,6 +1,25 @@
 import json
 import os
 
+banner = """========================================
+INVENTORY MANAGEMENT SYSTEM
+========================================
+"""
+
+menu = """----------- MENU -----------
+1. Display All Products
+2. Add Product
+3. Update Stock
+4. Search Product
+5. Save Inventory
+6. Exit
+----------------------------
+"""
+
+goodbye = """
+Thank you for using Inventory Management System.
+Program terminated."""
+
 def load_inventory():
     inventory = [] # begin with an empty inventory
     if os.path.exists("inventory.json"):
@@ -20,8 +39,8 @@ def find_product(inventory, product_id):
     return None
 
 def display_all(inventory):
-    print("""Current Inventory
-------------------------------------------------""")
+    print("Current Inventory")
+    print("------------------------------------------------")
     for product in inventory:
         print(f"ID: {product['id']} | Name: {product['name']} | Price: ${product['price']:.2f} | Stock: {product['stock']}")
     print("------------------------------------------------")
@@ -86,6 +105,15 @@ def update_stock(inventory):
     print("Stock updated successfully!")
     return inventory
 
+def product_details(product):
+    return f"""Product Found
+------------------------------------------------
+ID: {product['id']}
+Name: {product['name']}
+Price: ${product['price']:.2f}
+Stock: {product['stock']}
+------------------------------------------------"""
+
 def search_product(inventory):
     print("Search Product")
     product_id = input("Enter Product ID: ")
@@ -94,13 +122,7 @@ def search_product(inventory):
     if product == None:
         print("Product not found.")
         return None
-    print("""Product Found
-------------------------------------------------""")
-    print(f"ID: {product['id']}")
-    print(f"Name: {product['name']}")
-    print(f"Price: ${product['price']:.2f}")
-    print(f"Stock: {product['stock']}")
-    print("------------------------------------------------")
+    print(product_details(product))
     return None
 
 def save_inventory(inventory):
@@ -109,21 +131,10 @@ def save_inventory(inventory):
     return None
 
 def main():
-    print("""========================================
-INVENTORY MANAGEMENT SYSTEM
-========================================
-""")
+    print(banner)
     inventory = load_inventory()
     print()
-    print("""----------- MENU -----------
-1. Display All Products
-2. Add Product
-3. Update Stock
-4. Search Product
-5. Save Inventory
-6. Exit
-----------------------------
-""")
+    print(menu)
     while True:
         option = input("Enter option: ")
         print()
@@ -147,8 +158,6 @@ INVENTORY MANAGEMENT SYSTEM
         else:
             print("Invalid option!")
         print()
-    print("""
-Thank you for using Inventory Management System.
-Program terminated.""")
+    print(goodbye)
 
 main()

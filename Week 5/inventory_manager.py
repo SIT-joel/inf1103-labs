@@ -13,19 +13,56 @@ def load_inventory():
         print("Starting with an empty inventory.")
     return inventory
 
+def find_product(inventory, product_id):
+    for product in inventory:
+        if product["id"] == product_id:
+            return product
+    return None
+
 def display_all(inventory):
-    print("Current Inventory")
-    print("------------------------------------------------")
+    print("""Current Inventory
+------------------------------------------------""")
     for product in inventory:
         print(f"ID: {product['id']} | Name: {product['name']} | Price: ${product['price']:.2f} | Stock: {product['stock']}")
     print("------------------------------------------------")
 
+def get_valid_price():
+    while True:
+        price_input = input("Price: ")
+        try:
+            price = float(price_input)
+            if price >= 0:
+                return price
+        except ValueError:
+            pass
+        print("Error: price must be a number or it must not be a negative number")
+
+def get_valid_stock(prompt):
+    while True:
+        stock_input = input(prompt)
+        if not stock_input.isdigit():
+            print("Error: stock quantity must be a number or it must not be a negative number")
+            continue
+        return int(stock_input)
+
 def add_product(inventory):
     print("Add New Product")
-    product_id = input("Product ID: ")
-    name = input("Product Name: ")
-    price = float(input("Price: "))
-    stock = int(input("Stock Quantity: "))
+    while True:
+        product_id = input("Product ID: ")
+        if len(product_id) == 0:
+            print("Invalid Product ID!")
+            continue
+        if find_product(inventory, product_id) != None:
+            print("Error: product ID already exists")
+            continue
+        break
+    while True:
+        name = input("Product Name: ")
+        if len(name) != 0:
+            break
+        print("Invalid Product Name!")
+    price = get_valid_price()
+    stock = get_valid_stock("Stock Quantity: ")
     product = {"id": product_id, "name": name, "price": price, "stock": stock} # each product is a dictionary
     inventory.append(product)
     print()
@@ -36,34 +73,34 @@ def update_stock(inventory):
     print("Update Stock")
     product_id = input("Enter Product ID: ")
     print()
-    for product in inventory:
-        if product["id"] == product_id:
-            print("Product Found:")
-            print(f"Name: {product['name']}")
-            print(f"Current Stock: {product['stock']}")
-            print()
-            product["stock"] = int(input("New Stock Quantity: "))
-            print()
-            print("Stock updated successfully!")
-            return inventory
-    print("Product not found.")
+    product = find_product(inventory, product_id)
+    if product == None:
+        print("Product not found.")
+        return inventory
+    print("Product Found:")
+    print(f"Name: {product['name']}")
+    print(f"Current Stock: {product['stock']}")
+    print()
+    product["stock"] = get_valid_stock("New Stock Quantity: ")
+    print()
+    print("Stock updated successfully!")
     return inventory
 
 def search_product(inventory):
     print("Search Product")
     product_id = input("Enter Product ID: ")
     print()
-    for product in inventory:
-        if product["id"] == product_id:
-            print("Product Found")
-            print("------------------------------------------------")
-            print(f"ID: {product['id']}")
-            print(f"Name: {product['name']}")
-            print(f"Price: ${product['price']:.2f}")
-            print(f"Stock: {product['stock']}")
-            print("------------------------------------------------")
-            return None
-    print("Product not found.")
+    product = find_product(inventory, product_id)
+    if product == None:
+        print("Product not found.")
+        return None
+    print("""Product Found
+------------------------------------------------""")
+    print(f"ID: {product['id']}")
+    print(f"Name: {product['name']}")
+    print(f"Price: ${product['price']:.2f}")
+    print(f"Stock: {product['stock']}")
+    print("------------------------------------------------")
     return None
 
 def save_inventory(inventory):
@@ -72,21 +109,21 @@ def save_inventory(inventory):
     return None
 
 def main():
-    print("========================================")
-    print("INVENTORY MANAGEMENT SYSTEM")
-    print("========================================")
-    print()
+    print("""========================================
+INVENTORY MANAGEMENT SYSTEM
+========================================
+""")
     inventory = load_inventory()
     print()
-    print("----------- MENU -----------")
-    print("1. Display All Products")
-    print("2. Add Product")
-    print("3. Update Stock")
-    print("4. Search Product")
-    print("5. Save Inventory")
-    print("6. Exit")
-    print("----------------------------")
-    print()
+    print("""----------- MENU -----------
+1. Display All Products
+2. Add Product
+3. Update Stock
+4. Search Product
+5. Save Inventory
+6. Exit
+----------------------------
+""")
     while True:
         option = input("Enter option: ")
         print()
@@ -110,8 +147,8 @@ def main():
         else:
             print("Invalid option!")
         print()
-    print()
-    print("Thank you for using Inventory Management System.")
-    print("Program terminated.")
+    print("""
+Thank you for using Inventory Management System.
+Program terminated.""")
 
 main()

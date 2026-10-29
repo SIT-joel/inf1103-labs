@@ -13,11 +13,12 @@ class Inventory:
         return None
 
     def display_all(self):
-        print("Current Inventory")
-        print("------------------------------------------------")
+        table = ""
         for product in self.__products:
-            product.display_information()
-        print("------------------------------------------------")
+            table += product.display_information() + "\n"
+        print(f"""Current Inventory
+------------------------------------------------
+{table}------------------------------------------------""")
         return None
 
     def to_list(self):

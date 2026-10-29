@@ -7,15 +7,15 @@ from models.inventory import Inventory
 def load_inventory():
     inventory = Inventory() # begin with an empty inventory
     if os.path.exists("inventory.json"):
-        print("inventory.json found.")
+        print("""inventory.json found.
+Inventory loaded successfully.""")
         with open("inventory.json","r") as f:
             products = json.load(f)
         for product in products:
             inventory.add_product(Product(product["id"], product["name"], product["price"], product["stock"]))
-        print("Inventory loaded successfully.")
     else:
-        print("inventory.json not found.")
-        print("Starting with an empty inventory.")
+        print("""inventory.json not found.
+Starting with an empty inventory.""")
     return inventory
 
 def save_inventory(inventory):

@@ -13,8 +13,7 @@ class Product:
         return None
 
     def display_information(self):
-        print(f"ID: {self.__product_id} | Name: {self.__name} | Price: ${self.__price:.2f} | Stock: {self.__stock}")
-        return None
+        return f"ID: {self.__product_id} | Name: {self.__name} | Price: ${self.__price:.2f} | Stock: {self.__stock}"
 
     def to_dict(self):
         return {"id": self.__product_id, "name": self.__name, "price": self.__price, "stock": self.__stock}

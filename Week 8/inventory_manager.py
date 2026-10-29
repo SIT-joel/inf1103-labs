@@ -69,34 +69,32 @@ def main():
             stock = get_valid_stock("Stock Quantity: ")
             product = Product(product_id, name, price, stock) # create the Product object from the Product class
             inventory.add_product(product)
-            print()
-            print("Product added successfully!")
+            print("\nProduct added successfully!")
         elif option == "3":
             print("Update Stock")
             product_id = input("Enter Product ID: ")
-            print()
             product = inventory.search_product(product_id)
             if product == None:
-                print("Product not found.")
+                print("\nProduct not found.")
             else:
                 details = product.to_dict()
-                print("Product Found:")
-                print(f"Name: {details['name']}")
-                print(f"Current Stock: {details['stock']}")
-                print()
+                print(f"""
+Product Found:
+Name: {details['name']}
+Current Stock: {details['stock']}
+""")
                 product.update_stock(get_valid_stock("New Stock Quantity: "))
-                print()
-                print("Stock updated successfully!")
+                print("\nStock updated successfully!")
         elif option == "4":
             print("Search Product")
             product_id = input("Enter Product ID: ")
-            print()
             product = inventory.search_product(product_id)
             if product == None:
-                print("Product not found.")
+                print("\nProduct not found.")
             else:
                 details = product.to_dict()
-                print(f"""Product Found
+                print(f"""
+Product Found
 ------------------------------------------------
 ID: {details['id']}
 Name: {details['name']}

@@ -1,5 +1,5 @@
-import json
-import os
+from models.product import Product
+from storage.file_handler import load_inventory, save_inventory
 
 banner = """========================================
 INVENTORY MANAGEMENT SYSTEM
@@ -19,74 +19,6 @@ menu = """----------- MENU -----------
 goodbye = """
 Thank you for using Inventory Management System.
 Program terminated."""
-
-class Product:
-    def __init__(self, product_id, name, price, stock):
-        self.__product_id = product_id # private attributes, changed only through public methods
-        self.__name = name
-        self.__price = price
-        self.__stock = stock
-
-    def get_product_id(self):
-        return self.__product_id
-
-    def update_stock(self, quantity):
-        self.__stock = quantity
-        return None
-
-    def display_information(self):
-        print(f"ID: {self.__product_id} | Name: {self.__name} | Price: ${self.__price:.2f} | Stock: {self.__stock}")
-        return None
-
-    def to_dict(self):
-        return {"id": self.__product_id, "name": self.__name, "price": self.__price, "stock": self.__stock}
-
-class Inventory:
-    def __init__(self):
-        self.__products = [] # the collection of Product objects
-
-    def add_product(self, product):
-        self.__products.append(product)
-        return None
-
-    def search_product(self, product_id):
-        for product in self.__products:
-            if product.get_product_id() == product_id:
-                return product
-        return None
-
-    def display_all(self):
-        print("Current Inventory")
-        print("------------------------------------------------")
-        for product in self.__products:
-            product.display_information()
-        print("------------------------------------------------")
-        return None
-
-    def to_list(self):
-        products = []
-        for product in self.__products:
-            products.append(product.to_dict())
-        return products
-
-def load_inventory():
-    inventory = Inventory() # begin with an empty inventory
-    if os.path.exists("inventory.json"):
-        print("inventory.json found.")
-        with open("inventory.json","r") as f:
-            products = json.load(f)
-        for product in products:
-            inventory.add_product(Product(product["id"], product["name"], product["price"], product["stock"]))
-        print("Inventory loaded successfully.")
-    else:
-        print("inventory.json not found.")
-        print("Starting with an empty inventory.")
-    return inventory
-
-def save_inventory(inventory):
-    with open("inventory.json","w") as f:
-        json.dump(inventory.to_list(), f, indent=4)
-    return None
 
 def get_valid_price():
     while True:

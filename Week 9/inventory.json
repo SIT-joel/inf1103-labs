@@ -1,0 +1,10 @@
+[
+    {
+        "id": "p100",
+        "name": "test physical",
+        "price": 10.0,
+        "stock": 10,
+        "product_type": "physical",
+        "weight": 10.0
+    }
+]

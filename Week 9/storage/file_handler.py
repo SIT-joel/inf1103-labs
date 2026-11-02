@@ -8,7 +8,7 @@ from models.inventory import Inventory
 
 def load_inventory():
     inventory = Inventory() # begin with an empty inventory
-    if os.path.exists("inventory.json"):
+    if os.path.exists("data/inventory.json"):
         print("""inventory.json found.
 Inventory loaded successfully.""")
         with open("inventory.json","r") as f:
@@ -26,6 +26,6 @@ Starting with an empty inventory.""")
     return inventory
 
 def save_inventory(inventory):
-    with open("inventory.json","w") as f:
+    with open("data/inventory.json","w") as f:
         json.dump(inventory.to_list(), f, indent=4)
     return None

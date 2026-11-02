@@ -1,0 +1,18 @@
+[
+    {
+        "id": "p100",
+        "name": "test physical",
+        "price": 10.0,
+        "stock": 10,
+        "product_type": "physical",
+        "weight": 10.0
+    },
+    {
+        "id": "p200",
+        "name": "test digital",
+        "price": 20.0,
+        "stock": 20,
+        "product_type": "digital",
+        "download_size": 10.0
+    }
+]

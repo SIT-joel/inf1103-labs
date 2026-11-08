@@ -12,7 +12,7 @@ def load_inventory() -> Inventory:
     if os.path.exists("data/inventory.json"):
         print("""inventory.json found.
 Inventory loaded successfully.""")
-        with open("inventory.json","r") as f:
+        with open("data/inventory.json","r") as f:
             products = json.load(f)
         for product in products:
             supplier = Supplier(product["supplier"]["supplier_id"], product["supplier"]["name"], product["supplier"]["contact_email"])

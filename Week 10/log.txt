@@ -1,3 +1,51 @@
+commit f1d78953d769c8778f2e1fafd9977d8272678e14
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 22:35:21 2026 +0800
+
+    Add Docker workflow screenshots for Week 10 lab
+
+commit b2ee2e09849dc42d57d374814b3fd184fda2b003
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 22:34:49 2026 +0800
+
+    Stop tracking Predict_First_Notes.docx (submitted separately)
+
+commit 16e7890db12583c1f477153bac633ab2ee623800
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 22:32:51 2026 +0800
+
+    Record Section 7.3 answer in the student's own wording
+
+commit 694a9988c381aa5fd6946a26933f0b771e202b43
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 22:29:02 2026 +0800
+
+    Record Predict First 4 in the student's own wording
+
+commit 25aba2ecdabc9a4d18c5e8bed859e9b057808417
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 22:11:14 2026 +0800
+
+    Record Predict First 3 in the student's own wording
+
+commit 06bfe75ef695ac8e047bb52622ec0aea5ca6d2a4
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 22:05:23 2026 +0800
+
+    Record Predict First 2 in the student's own wording
+
+commit 801e6e891098d9ce7e7c58a96b095d866ea4d81d
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 21:58:59 2026 +0800
+
+    Update Predict First 1 notes to record the prediction mismatch and explanation
+
+commit b4591bd3bf36af1d0d3fe463b3574777477f17de
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 19:27:42 2026 +0800
+
+    Add log.txt with git history for Week 10 lab
+
 commit f0537100b9fc432bc68df5097f0d2970e359ec25
 Author: cadenzar-sudo <joel.lim04@outlook.com>
 Date:   Sun Nov 8 19:01:20 2026 +0800

@@ -1,0 +1,185 @@
+commit f0537100b9fc432bc68df5097f0d2970e359ec25
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 19:01:20 2026 +0800
+
+    Fix load_inventory to read data/inventory.json (same path it checks) and drop stale root copy
+
+commit 552693fbbaea1f5686ed54ab7f66fff0c46e60c3
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 17:17:42 2026 +0800
+
+    Add tests for relationships, LSP and polymorphism; update UML diagram and predict-first notes
+
+commit ff6279c76f1ab30b6bad69398846f1c18007e42a
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 16:41:18 2026 +0800
+
+    Add Order and OrderLine classes implementing composition
+
+commit e929f13efa39eb8ea6b8b03d0450de0714456ef0
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 16:41:04 2026 +0800
+
+    Type Inventory collection and add remove_product/find_product (aggregation)
+
+commit a2f4870c075fc2339f6a46e82c1e3bcb5f69504b
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 16:40:37 2026 +0800
+
+    Add Supplier class and associate it with Product (association + type hints)
+
+commit 9700bfede9a83b6cd77ac01a7965e8c95e669389
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 16:38:47 2026 +0800
+
+    Copy Week 9 project as starting point for Week 10 lab
+
+commit f5b9101423e063e465f0ce34ef7caa29d901343e
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Mon Nov 2 21:59:00 2026 +0800
+
+    update data storage in file handler for json to work with docker
+
+commit f3700afe7967284b632d0c8949be6516ff3f19fb
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Mon Nov 2 21:33:55 2026 +0800
+
+    Add new child classes, PhysicalProduct, DigitalProduct and SubscriptionProduct. Allow adding and saving of all new product types as well as user input and validation
+
+commit bad9b037c115a68a09e373ed4669902028354264
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Thu Oct 29 14:58:54 2026 +0800
+
+    Tidied printing using fstrings
+
+commit 22fa7c00e4c2187a92b24dfd765868174dc3ffa0
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Thu Oct 29 14:55:18 2026 +0800
+
+    Split classes into modules
+
+commit b32eadc28abaad2c7a1f64c9beea323638854dad
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Mon Oct 26 18:05:22 2026 +0800
+
+    Completed OOP inventory management system
+
+commit 04e068e65b6d2616bc2ce3c1f1de534f02ce0adb
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Mon Oct 26 18:03:51 2026 +0800
+
+    Refactored inventory system using OOP
+
+commit 9395fb0c1edb7f7a8771e212b1dc36f884f87aca
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Mon Oct 26 18:02:42 2026 +0800
+
+    Created Inventory class
+
+commit 3256f99929c27ac1503ed65f04dedfdbe07a1b6c
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Mon Oct 26 18:02:10 2026 +0800
+
+    Created Product class
+
+commit 54211905da57a6f53d0ecc92f0259ba402295a4b
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Tue Oct 6 22:02:00 2026 +0800
+
+    Fixed triple quote indentation
+
+commit 6169958be4c35e838c7c50e5ecc002efdb0ea642
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Tue Oct 6 21:52:39 2026 +0800
+
+    Added input validation and triple quoted prints
+
+commit 74843d328c006f36aaed2568e86cd783c12ae034
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Oct 2 16:37:16 2026 +0800
+
+    Week 5 Dockerfile
+
+commit 4bacfabad3f4bc79f211194ccc47cef0559f6de4
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Oct 2 16:36:38 2026 +0800
+
+    Added save_inventory and save before exit
+
+commit 98c69634157b84ff3758b3d044ebb07451fadb8b
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Oct 2 16:35:54 2026 +0800
+
+    Added load_inventory to load inventory.json
+
+commit 18c847f31c526f37df6332c8cec2390d496dd7d3
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Oct 2 16:35:10 2026 +0800
+
+    Created inventory dictionary and menu system
+
+commit fd3347f4716d6ed2dd295d7731d273a1b9466c59
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Sep 25 17:38:34 2026 +0800
+
+    Fixed bug in quanity counting
+
+commit 1b91e27202861ff8fcac68ae3cd8941ae7ba150b
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Sep 25 17:25:24 2026 +0800
+
+    Persistant auditor
+
+commit e40eaf6f8eff59f03d80bbfda4bc0c21aabeefa0
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Sep 18 17:33:58 2026 +0800
+
+    week 3 modular auditor and dockerfile
+
+commit 529da80ec5363af2d351fdcda084ca27f95d860d
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Sep 11 23:17:11 2026 +0800
+
+    added comment to show how to exclude overstock from printing
+
+commit f3c640a23426118eb3a85aafaf90d33b3af0ce6c
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Sep 11 17:17:39 2026 +0800
+
+    Docker file
+
+commit dfe3ffd203cfda8a8c0f11d50286b10641a63ba5
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Sep 11 16:57:39 2026 +0800
+
+    auditor code
+
+commit cd4e263b3436dd436d9ea9d063cbcd27a374a0e4
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Sep 4 16:20:51 2026 +0800
+
+    Fun conditions
+
+commit 0a44c17ae12179942c4df83fc8df7d56620c8192
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Sep 4 16:19:56 2026 +0800
+
+    interactive
+
+commit b54acaff76653586410c6a18d3c2415e142b3361
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Sep 4 16:17:12 2026 +0800
+
+    added follower tracker
+
+commit b8b43afe77f029c191cbcd7e1db1975971afcb35
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Sep 4 16:13:05 2026 +0800
+
+    updated post
+
+commit 169a18cede0e5f5d692c6306e20a9b1e67f9ba09
+Author: cadenzar <joel.lim04@outlook.com>
+Date:   Fri Sep 4 16:11:25 2026 +0800
+
+    First Post

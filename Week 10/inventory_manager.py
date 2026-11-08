@@ -1,6 +1,7 @@
 from models.physical_product import PhysicalProduct
 from models.digital_product import DigitalProduct
 from models.subscription_product import SubscriptionProduct
+from models.supplier import Supplier
 from storage.file_handler import load_inventory, save_inventory
 
 banner = """========================================
@@ -22,7 +23,7 @@ goodbye = """
 Thank you for using Inventory Management System.
 Program terminated."""
 
-def get_valid_price():
+def get_valid_price() -> float:
     while True:
         price_input = input("Price: ")
         try:
@@ -33,7 +34,7 @@ def get_valid_price():
             pass
         print("Error: price must be a number or it must not be a negative number")
 
-def get_valid_stock(prompt):
+def get_valid_stock(prompt: str) -> int:
     while True:
         stock_input = input(prompt)
         if not stock_input.isdigit():
@@ -41,7 +42,7 @@ def get_valid_stock(prompt):
             continue
         return int(stock_input)
 
-def get_valid_product_type():
+def get_valid_product_type() -> str:
     while True:
         product_type = input("Product Type (Physical/Digital/Subscription product):").lower()
         if product_type in ["physical","digital", "subscription product"]:
@@ -49,7 +50,7 @@ def get_valid_product_type():
         else:
             print("Error: Invalid product type, product type must be physical, digital or subscription product")
 
-def get_valid_weight():
+def get_valid_weight() -> float:
     while True:
         weight_input = input("Enter the weight of the product in kilograms:")
         try:
@@ -60,7 +61,7 @@ def get_valid_weight():
         except ValueError:
             print("Error: weight must be a integer or float and cannot be less than or equal to 0")
 
-def get_valid_download_size():
+def get_valid_download_size() -> float:
     while True:
         download_size_input = input("Enter the download size of the product in megabytes:")
         try:
@@ -71,7 +72,7 @@ def get_valid_download_size():
         except ValueError:
             print("Error: Download Size must be a integer or float and cannot be less than or equal to 0")
 
-def get_valid_duration():
+def get_valid_duration() -> int:
     while True:
         duration_input = input("Duration of Subscription in days:")
         if not duration_input.isdigit():
@@ -83,7 +84,27 @@ def get_valid_duration():
             continue
         return int(duration_input)
 
-def main():
+def get_valid_supplier() -> Supplier:
+    # The Supplier is created independently and then supplied to the Product (association)
+    print("Supplier Details")
+    while True:
+        supplier_id = input("Supplier ID: ")
+        if len(supplier_id) != 0:
+            break
+        print("Invalid Supplier ID!")
+    while True:
+        supplier_name = input("Supplier Name: ")
+        if len(supplier_name) != 0:
+            break
+        print("Invalid Supplier Name!")
+    while True:
+        contact_email = input("Supplier Contact Email: ")
+        if len(contact_email) != 0:
+            break
+        print("Invalid Supplier Contact Email!")
+    return Supplier(supplier_id, supplier_name, contact_email)
+
+def main() -> None:
     print(banner)
     inventory = load_inventory()
     print()
@@ -111,18 +132,19 @@ def main():
                 print("Invalid Product Name!")
             price = get_valid_price()
             stock = get_valid_stock("Stock Quantity: ")
+            supplier = get_valid_supplier()
             product_type = get_valid_product_type()
             if product_type == "physical":
                 weight = get_valid_weight()
-                product = PhysicalProduct(product_id, name, price, stock, weight) 
+                product = PhysicalProduct(product_id, name, price, stock, supplier, weight)
                 print(f"Shipping cost for 1 unit of this product is {product.calculate_shipping_cost():.2f}")
             elif product_type == "digital":
                 download_size = get_valid_download_size()
-                product = DigitalProduct(product_id, name, price, stock, download_size)
+                product = DigitalProduct(product_id, name, price, stock, supplier, download_size)
             elif product_type == "subscription product":
                 duration = get_valid_duration()
-                product = SubscriptionProduct(product_id, name, price, stock, duration)
-            print(product.get_fulfilment_info()) # This prints out if the product requires physical or digital delivery 
+                product = SubscriptionProduct(product_id, name, price, stock, supplier, duration)
+            print(product.get_fulfilment_info()) # This prints out if the product requires physical or digital delivery
             inventory.add_product(product)
             print("\nProduct added successfully!")
         elif option == "3":

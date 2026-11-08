@@ -174,3 +174,5 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
+# Week 10 lab: answer document submitted separately, not tracked
+Week 10/Predict_First_Notes.docx

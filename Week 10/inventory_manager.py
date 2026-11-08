@@ -121,7 +121,7 @@ def main() -> None:
                 if len(product_id) == 0:
                     print("Invalid Product ID!")
                     continue
-                if inventory.search_product(product_id) != None:
+                if inventory.find_product(product_id) != None:
                     print("Error: product ID already exists")
                     continue
                 break
@@ -150,7 +150,7 @@ def main() -> None:
         elif option == "3":
             print("Update Stock")
             product_id = input("Enter Product ID: ")
-            product = inventory.search_product(product_id)
+            product = inventory.find_product(product_id)
             if product == None:
                 print("\nProduct not found.")
             else:
@@ -165,7 +165,7 @@ Current Stock: {details['stock']}
         elif option == "4":
             print("Search Product")
             product_id = input("Enter Product ID: ")
-            product = inventory.search_product(product_id)
+            product = inventory.find_product(product_id)
             if product == None:
                 print("\nProduct not found.")
             else:

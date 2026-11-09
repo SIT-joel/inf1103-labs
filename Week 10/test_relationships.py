@@ -65,7 +65,6 @@ def test_aggregation() -> None:
     print("=" * 60)
 
     supplier = Supplier("SUP-002", "GadgetWorld", "orders@gadgetworld.example")
-    # Create the Product BEFORE creating/adding it to an Inventory
     product = PhysicalProduct("P-300", "Keyboard", 25.00, 40, supplier, 0.8)
 
     inventory_a = Inventory()
@@ -170,8 +169,6 @@ def test_lsp() -> None:
     found.update_stock(950)  # normal Product operation through the base type
     check("Normal Product operations work on any subclass through the Inventory", digital.to_dict()["stock"] == 950)
 
-    # 6.3: an expectation of the parent class preserved by the subclasses:
-    # update_stock(quantity) replaces the stored stock, and to_dict() reflects it.
     physical.update_stock(55)
     digital.update_stock(900)
     check("update_stock keeps its expected meaning for PhysicalProduct", physical.to_dict()["stock"] == 55)
@@ -194,10 +191,8 @@ def test_polymorphism() -> None:
     for product in products:
         inventory.add_product(product)
 
-    # Predict first (7.2): each product prints its own specialised fulfilment info.
-    # One loop through the common Product type - no separate loops, no isinstance.
     print("\nPredict first check: one loop, common Product type, no isinstance:")
-    for product in products:  # the same objects the Inventory aggregates
+    for product in products:  
         product.display_information()
         print(f"  -> {product.get_fulfilment_info()}")
     print()

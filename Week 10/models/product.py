@@ -8,8 +8,6 @@ class Product(ABC):
         self._name: str = name
         self._price: float = price
         self._stock: int = stock
-        # Association: a Product knows about its Supplier but does not own it.
-        # The Supplier is created independently and passed in when the Product is created.
         self.supplier: Supplier = supplier
 
     def get_product_id(self) -> str:

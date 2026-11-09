@@ -1,3 +1,15 @@
+commit 85e1edd442c97032884761fe5d457e5a04efe5c4
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Mon Nov 9 13:12:59 2026 +0800
+
+    Keep repo to source only: remove UML generator script, untrack diagram image
+
+commit 0b33dd0af143b2a5879e8b84eec13bc2bdcbd35c
+Author: cadenzar-sudo <joel.lim04@outlook.com>
+Date:   Sun Nov 8 22:35:21 2026 +0800
+
+    Update log.txt with Week 10 git history
+
 commit f1d78953d769c8778f2e1fafd9977d8272678e14
 Author: cadenzar-sudo <joel.lim04@outlook.com>
 Date:   Sun Nov 8 22:35:21 2026 +0800

@@ -176,3 +176,6 @@ pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/python
 # Week 10 lab: answer document submitted separately, not tracked
 Week 10/Predict_First_Notes.docx
+
+# Week 10 lab: diagram generated outside the repo, submitted via zip
+Week 10/uml_class_diagram.png

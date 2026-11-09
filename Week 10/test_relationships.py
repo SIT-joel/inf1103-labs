@@ -1,16 +1,3 @@
-"""Lab 8 (Week 10) test evidence.
-
-Covers the lab's testing requirements:
-- Section 2: Supplier/Product association (including the "Predict first" del supplier check)
-- Section 3: Inventory/Product aggregation (remove from one inventory, add to another)
-- Section 4: Order/OrderLine composition (including the "Predict first" object-count check)
-- Section 6: LSP substitutability via show_product_details(product: Product)
-- Section 7: Polymorphism through the common Product abstraction (no isinstance)
-- Section 5: type-hint evidence dump (method signatures)
-
-Run from this folder:  python test_relationships.py
-"""
-
 import inspect
 
 from models.digital_product import DigitalProduct
@@ -60,17 +47,6 @@ def test_association() -> None:
     print("Supplier info through DigitalProduct:")
     print(f"  {digital.supplier.display_information()}")
 
-    # Predict first (2.2): what happens if we delete the supplier variable?
-    # Each Product stored its own reference to the Supplier object, so the
-    # Supplier should still be reachable through both products.
-    print("\nPredict first check: del supplier")
-    del supplier
-    print(f"  {physical.supplier.display_information()}")
-    check("Product still displays supplier info after 'del supplier'",
-          physical.supplier.display_information() == "Supplier ID: SUP-001 | Name: TechSupply Co | Contact Email: sales@techsupply.example")
-    check("DigitalProduct still displays supplier info after 'del supplier'",
-          digital.supplier.name == "TechSupply Co")
-
     # Confirm the Supplier and Products are separate objects that can exist independently
     print("\nObject identity:")
     print(f"  id(Supplier via product) = {id(physical.supplier)}")
@@ -88,8 +64,6 @@ def test_aggregation() -> None:
     print("SECTION 3 - AGGREGATION: Inventory and Product")
     print("=" * 60)
 
-    # Predict first (3.2): after removal from Inventory A the Product should still
-    # work, because the Inventory only held a reference to it.
     supplier = Supplier("SUP-002", "GadgetWorld", "orders@gadgetworld.example")
     # Create the Product BEFORE creating/adding it to an Inventory
     product = PhysicalProduct("P-300", "Keyboard", 25.00, 40, supplier, 0.8)

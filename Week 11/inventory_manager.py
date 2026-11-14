@@ -1,7 +1,5 @@
-from models.physical_product import PhysicalProduct
-from models.digital_product import DigitalProduct
-from models.subscription_product import SubscriptionProduct
 from models.supplier import Supplier
+from models.product_factory import ProductFactory
 from storage.file_handler import load_inventory, save_inventory
 
 banner = """========================================
@@ -134,16 +132,16 @@ def main() -> None:
             stock = get_valid_stock("Stock Quantity: ")
             supplier = get_valid_supplier()
             product_type = get_valid_product_type()
+            extra = 0.0
             if product_type == "physical":
-                weight = get_valid_weight()
-                product = PhysicalProduct(product_id, name, price, stock, supplier, weight)
-                print(f"Shipping cost for 1 unit of this product is {product.calculate_shipping_cost():.2f}")
+                extra = get_valid_weight()
             elif product_type == "digital":
-                download_size = get_valid_download_size()
-                product = DigitalProduct(product_id, name, price, stock, supplier, download_size)
+                extra = get_valid_download_size()
             elif product_type == "subscription product":
-                duration = get_valid_duration()
-                product = SubscriptionProduct(product_id, name, price, stock, supplier, duration)
+                extra = get_valid_duration()
+            product = ProductFactory.create(product_type, product_id, name, price, stock, supplier, extra)
+            if product_type == "physical":
+                print(f"Shipping cost for 1 unit of this product is {product.calculate_shipping_cost():.2f}")
             print(product.get_fulfilment_info()) # This prints out if the product requires physical or digital delivery
             inventory.add_product(product)
             print("\nProduct added successfully!")

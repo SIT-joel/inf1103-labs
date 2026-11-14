@@ -1,9 +1,7 @@
 import json
 import os
 
-from models.physical_product import PhysicalProduct
-from models.digital_product import DigitalProduct
-from models.subscription_product import SubscriptionProduct
+from models.product_factory import ProductFactory
 from models.supplier import Supplier
 from models.inventory import Inventory
 
@@ -16,12 +14,14 @@ Inventory loaded successfully.""")
             products = json.load(f)
         for product in products:
             supplier = Supplier(product["supplier"]["supplier_id"], product["supplier"]["name"], product["supplier"]["contact_email"])
+            extra = 0.0
             if product["product_type"] == "physical":
-                inventory.add_product(PhysicalProduct(product["id"], product["name"], product["price"], product["stock"], supplier, product["weight"]))
+                extra = product["weight"]
             elif product["product_type"] == "digital":
-                inventory.add_product(DigitalProduct(product["id"], product["name"], product["price"], product["stock"], supplier, product["download_size"]))
+                extra = product["download_size"]
             elif product["product_type"] == "subscription product":
-                inventory.add_product(SubscriptionProduct(product["id"], product["name"], product["price"], product["stock"], supplier, product["duration"]))
+                extra = product["duration"]
+            inventory.add_product(ProductFactory.create(product["product_type"], product["id"], product["name"], product["price"], product["stock"], supplier, extra))
     else:
         print("""inventory.json not found.
 Starting with an empty inventory.""")

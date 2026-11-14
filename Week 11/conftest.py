@@ -1,1 +1,1 @@
-collect_ignore = ["test_relationships.py"]
+collect_ignore: list[str] = ["test_relationships.py"]

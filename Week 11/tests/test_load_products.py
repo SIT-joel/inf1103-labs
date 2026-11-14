@@ -4,7 +4,7 @@ from storage.file_handler import load_products
 
 SUPPLIER = Supplier("SUP-001", "TechSupply Co", "sales@techsupply.example")
 
-def test_loads_valid_rows_and_skips_invalid_rows(capsys):
+def test_loads_valid_rows_and_skips_invalid_rows(capsys) -> None:
     inventory = Inventory()
     load_products("products.csv", inventory, SUPPLIER)
     output = capsys.readouterr().out
@@ -18,7 +18,7 @@ def test_loads_valid_rows_and_skips_invalid_rows(capsys):
     assert "3 products loaded." in output
     assert "Load attempt finished." in output
 
-def test_missing_file_is_handled_gracefully(capsys):
+def test_missing_file_is_handled_gracefully(capsys) -> None:
     inventory = Inventory()
     load_products("missing.csv", inventory, SUPPLIER)
     output = capsys.readouterr().out

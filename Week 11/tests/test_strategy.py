@@ -10,38 +10,38 @@ def make_order() -> Order:
     order.add_order_line(PhysicalProduct("P-100", "Desk Lamp", 125.0, 10, SUPPLIER, 1.0), 2)
     return order
 
-def test_no_discount_returns_total_unchanged():
+def test_no_discount_returns_total_unchanged() -> None:
     assert make_order().calculate_total() == 250.0
 
-def test_default_discount_is_no_discount():
+def test_default_discount_is_no_discount() -> None:
     assert isinstance(Order("ORD-002").discount, NoDiscount)
 
-def test_percentage_discount_takes_percentage_off():
+def test_percentage_discount_takes_percentage_off() -> None:
     order = make_order()
     order.set_discount(PercentageDiscount(10))
     assert order.calculate_total() == 225.0
 
-def test_bulk_discount_takes_amount_off_totals_at_threshold():
+def test_bulk_discount_takes_amount_off_totals_at_threshold() -> None:
     order = make_order()
     order.set_discount(BulkDiscount(200, 20))
     assert order.calculate_total() == 230.0
 
-def test_bulk_discount_ignores_totals_below_threshold():
+def test_bulk_discount_ignores_totals_below_threshold() -> None:
     order = Order("ORD-003")
     order.add_order_line(PhysicalProduct("P-101", "USB Cable", 50.0, 10, SUPPLIER, 0.2), 3)
     order.set_discount(BulkDiscount(200, 20))
     assert order.calculate_total() == 150.0
 
-def test_student_discount_takes_five_percent_off():
+def test_student_discount_takes_five_percent_off() -> None:
     order = make_order()
     order.set_discount(StudentDiscount())
     assert order.calculate_total() == 237.5
 
-def test_new_strategy_can_be_added_without_changing_order():
+def test_new_strategy_can_be_added_without_changing_order() -> None:
     order = make_order()
     order.set_discount(StudentDiscount())
     assert order.calculate_total() == 237.5
 
-def test_order_contains_no_discount_if_elif_logic():
+def test_order_contains_no_discount_if_elif_logic() -> None:
     with open("models/order.py") as source:
         assert "elif" not in source.read()

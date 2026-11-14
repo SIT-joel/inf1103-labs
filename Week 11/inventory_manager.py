@@ -21,16 +21,16 @@ goodbye = """
 Thank you for using Inventory Management System.
 Program terminated."""
 
-def get_valid_price() -> float:
+def get_positive_float(prompt: str) -> float:
     while True:
-        price_input = input("Price: ")
         try:
-            price = float(price_input)
-            if price >= 0:
-                return price
+            value = float(input(prompt))
+            if value <= 0:
+                print("Please enter a number greater than zero.")
+                continue
+            return value
         except ValueError:
-            pass
-        print("Error: price must be a number or it must not be a negative number")
+            print("Please enter a valid number, e.g. 12.50")
 
 def get_valid_stock(prompt: str) -> int:
     while True:
@@ -128,7 +128,7 @@ def main() -> None:
                 if len(name) != 0:
                     break
                 print("Invalid Product Name!")
-            price = get_valid_price()
+            price = get_positive_float("Price: ")
             stock = get_valid_stock("Stock Quantity: ")
             supplier = get_valid_supplier()
             product_type = get_valid_product_type()
